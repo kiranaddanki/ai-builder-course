@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Builder Course — Projects</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 48px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    header h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #94a3b8;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #1e2130;
+      border: 1px solid #2d3148;
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-color);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .card:hover::before { opacity: 0.05; }
+
+    .card > * { position: relative; z-index: 1; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .module-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 2px;
+    }
+
+    .card h2 {
+      font-size: 17px;
+      font-weight: 650;
+      color: #f1f5f9;
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #2d3148;
+      color: #94a3b8;
+      border: 1px solid #3b4168;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #64748b;
+      margin-top: auto;
+      padding-top: 4px;
+      border-top: 1px solid #2d3148;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #334155;
+    }
+
+    /* Per-card accent colours */
+    .card-1 { --accent-color: #6366f1; --accent-gradient: linear-gradient(135deg, #6366f1, #818cf8); }
+    .card-2 { --accent-color: #10b981; --accent-gradient: linear-gradient(135deg, #10b981, #34d399); }
+    .card-3 { --accent-color: #f59e0b; --accent-gradient: linear-gradient(135deg, #f59e0b, #fbbf24); }
+    .card-4 { --accent-color: #ef4444; --accent-gradient: linear-gradient(135deg, #ef4444, #f87171); }
+    .card-5 { --accent-color: #8b5cf6; --accent-gradient: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+
+    footer {
+      text-align: center;
+      margin-top: 64px;
+      font-size: 13px;
+      color: #475569;
+    }
+
+    footer a {
+      color: #6366f1;
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Learning Portfolio</div>
+    <h1>AI Builder Course<br>Projects</h1>
+    <p>A collection of hands-on projects built while learning to design, build, and deploy AI-powered applications.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- Module 1 -->
+    <div class="card card-1">
+      <div class="card-header">
+        <div class="icon">🚀</div>
+        <div>
+          <div class="module-label">Module 1</div>
+          <h2>Building New AI-Powered Apps</h2>
+        </div>
+      </div>
+      <p>Design and build AI-first applications from scratch. Learn to integrate LLM APIs, craft effective prompts, and deploy a fully functional product end-to-end.</p>
+      <div class="tags">
+        <span class="tag">LLM APIs</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">App Design</span>
+        <span class="tag">Deployment</span>
+      </div>
+      <div class="status"><span class="status-dot"></span>Coming soon</div>
+    </div>
+
+    <!-- Module 2 -->
+    <div class="card card-2">
+      <div class="card-header">
+        <div class="icon">🔧</div>
+        <div>
+          <div class="module-label">Module 2</div>
+          <h2>Enhancing Existing Applications</h2>
+        </div>
+      </div>
+      <p>Layer AI capabilities onto mature products. Identify enhancement opportunities, add smart features like search and summarisation, and measure their real-world impact.</p>
+      <div class="tags">
+        <span class="tag">AI Features</span>
+        <span class="tag">Refactoring</span>
+        <span class="tag">A/B Testing</span>
+        <span class="tag">KPIs</span>
+      </div>
+      <div class="status"><span class="status-dot"></span>Coming soon</div>
+    </div>
+
+    <!-- Module 3 -->
+    <div class="card card-3">
+      <div class="card-header">
+        <div class="icon">🔌</div>
+        <div>
+          <div class="module-label">Module 3</div>
+          <h2>Building MCP Servers</h2>
+        </div>
+      </div>
+      <p>Use the Model Context Protocol to connect AI models to external tools, databases, and APIs. Build and expose custom tools, resources, and prompt templates.</p>
+      <div class="tags">
+        <span class="tag">MCP</span>
+        <span class="tag">Tool Use</span>
+        <span class="tag">APIs</span>
+        <span class="tag">Auth & Security</span>
+      </div>
+      <div class="status"><span class="status-dot"></span>Coming soon</div>
+    </div>
+
+    <!-- Module 4 -->
+    <div class="card card-4">
+      <div class="card-header">
+        <div class="icon">🤖</div>
+        <div>
+          <div class="module-label">Module 4</div>
+          <h2>Building AI Agents</h2>
+        </div>
+      </div>
+      <p>Build autonomous agents that reason, plan, and act across multiple steps. Implement memory, tool use, human-in-the-loop controls, and multi-agent collaboration.</p>
+      <div class="tags">
+        <span class="tag">ReAct</span>
+        <span class="tag">Memory</span>
+        <span class="tag">Multi-Agent</span>
+        <span class="tag">Agent Safety</span>
+      </div>
+      <div class="status"><span class="status-dot"></span>Coming soon</div>
+    </div>
+
+    <!-- Module 5 -->
+    <div class="card card-5">
+      <div class="card-header">
+        <div class="icon">🧠</div>
+        <div>
+          <div class="module-label">Module 5</div>
+          <h2>Building ML-Powered Bots</h2>
+        </div>
+      </div>
+      <p>Train and fine-tune ML models for domain-specific tasks, then wrap them in intelligent bots. Cover the full MLOps lifecycle from training through deployment and monitoring.</p>
+      <div class="tags">
+        <span class="tag">Fine-Tuning</span>
+        <span class="tag">MLOps</span>
+        <span class="tag">Chatbots</span>
+        <span class="tag">Monitoring</span>
+      </div>
+      <div class="status"><span class="status-dot"></span>Coming soon</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Built by <a href="https://github.com/kiranaddanki" target="_blank">kiranaddanki</a> · AI Builder Course Portfolio · 2026</p>
+  </footer>
+
+</body>
+</html>
